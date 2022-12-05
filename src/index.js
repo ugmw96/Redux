@@ -3,6 +3,41 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+
+//Store -> GLOBLIZED STATE
+
+//Action -> action increment
+const increment = () => {
+  return { 
+    type: 'INCREMENT' 
+  };
+}
+
+const decrement = () => {
+  return { 
+    type: 'DECREMENT' 
+  };
+};
+//reducer
+const counter = (state = 0 ,action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+  }
+}
+
+
+let store = createStore(counter);
+store.subscribe(() => console.log(store.getState()))
+//dispatch
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(decrement())
+store.dispatch(increment())
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
