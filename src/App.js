@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from '@mui/material';
-import { decrement, increment, loggedt } from './actions';
+import { decrement, increment, loggedt, increment5 } from './actions';
 
 function App() {
   const counter = useSelector (state => state.counter);
@@ -15,8 +15,13 @@ function App() {
 
      <h1>Counter {counter}</h1>
 
-     {logged && (<Button onClick={() => dispatch(increment(5))}>+</Button>,
-     <Button onClick={() => dispatch(decrement())}>-</Button>)}
+     {logged && (
+        <div>
+          <Button onClick={() => dispatch(increment())}>+</Button>
+          <Button onClick={() => dispatch(decrement())}>-</Button>
+          <Button onClick={() => dispatch(increment5())}>+5</Button>
+          </div>
+          )}
 
     </div>
   );
